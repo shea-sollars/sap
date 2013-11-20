@@ -8,7 +8,7 @@ if (empty($_GET['domain'])) {
 };
 
 $key = '{KEY_PROVIDED_BY_freedomainapi.com}';
-$url = sprintf('http://freedomainapi.com/?key=%s&domain=%s', $key, $_GET['domain']);
+$url = 'http://freedomainapi.com/?' . http_build_query(['key' => $key, 'domain' => $_GET['domain']]);
 $result = file_get_contents($url);
 
 die($callback.'('.$result.');');
